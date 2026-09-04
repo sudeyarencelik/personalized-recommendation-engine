@@ -5,37 +5,38 @@ Bu proje, gerçek e-ticaret işlem verilerini (**UCI Online Retail**) kullanarak
 
 ---
 
-## 📌 Proje Akış Şeması (Flowchart)
+### Proje Akış Şeması (Flowchart)
 
 ```mermaid
 flowchart TD
-    A[Ham E-Ticaret Verisi: Online_Retail.csv] --> B[Veri Temizleme: Eksik ID, İptal 'C', Negatif Miktar Filtresi]
+    A[Ham E-Ticaret Verisi: Online_Retail.csv] --> B[Veri Temizleme: Eksik ID, İptal C, Negatif Miktar Filtresi]
     B --> C[Tekil Kullanıcı - Ürün Sepet Kümelerinin Çıkarılması]
     C --> D[Hedef Müşteri ID Seçimi]
     D --> E[Tüm Müşterilerin Sepetleriyle Karşılaştırma]
-    E --> F{Ortak Ürün Sayısı >= 24 ?}
+    E --> F{Ortak Ürün Sayısı >= N ?}
     F -- Hayır --> G[Kullanıcıyı Atla]
     F -- Evet --> H[Jaccard Benzerlik Skorunu Hesapla]
     H --> I[En Benzer Top-K Müşteriyi Sırala]
-    I --> J[Benzer Kişilerin Aldığı Ürünleri Havuzda Topla]
-    J --> K[Hedef Müşterinin Zaten Aldığı Ürünleri Çıkar]
-    K --> L[Benzerlik Ağırlıklı Öneri Puanlarını Hesapla]
-    L --> M[🎯 Kişiselleştirilmiş Top-N Ürün Önerisi]
+    I --> J[Önerilmeyen Ürünleri Havuzla]
+    J --> K[Skorlayıp Sıralı Liste Döndür]
+```
 
-    personalized-recommendation-engine/
-│
+###  Proje Dizin Yapısı
+
+```text
+personalized-recommendation-engine/
 ├── data/
-│   └── Online_Retail.csv          # E-ticaret veri seti
-│
+│   └── Online_Retail.csv
 ├── src/
-│   ├── __init__.py                # Paket tanımlayıcı
-│   ├── data_loader.py             # CSV / Excel okuma modülü
-│   ├── preprocessing.py          # Veri temizleme ve mapping
-│   ├── similarity.py             # Jaccard benzerlik algoritması
-│   ├── recommender.py            # Öneri ve filtreleme motoru
-│   └── evaluation.py             # Değerlendirme metrikleri
-│
-├── .gitignore                     # Git tarafından yok sayılacak dosyalar
-├── requirements.txt               # Gerekli Python kütüphaneleri
-├── README.md                      # Proje dokümantasyonu
-└── main.py                        # İnteraktif terminal uygulaması
+│   ├── __init__.py
+│   ├── data_loader.py
+│   ├── preprocessing.py
+│   ├── similarity.py
+│   └── recommender.py
+├── app.py
+├── main.py
+├── exploration.ipynb
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
