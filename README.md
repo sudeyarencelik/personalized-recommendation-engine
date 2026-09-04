@@ -1,10 +1,14 @@
-# 🛒 Personalized E-Commerce Product Recommendation System
+#  Personalized E-Commerce Product Recommendation System
 > **User-Based Collaborative Filtering Engine using Jaccard Similarity**
 
 Bu proje, gerçek e-ticaret işlem verilerini (**UCI Online Retail**) kullanarak kullanıcıların satın alma davranışlarını analiz eden ve **Kullanıcı Tabanlı İşbirlikçi Filtreleme (User-Based Collaborative Filtering)** yaklaşımıyla kişiselleştirilmiş ürün önerileri sunan bir makine öğrenmesi / veri madenciliği motorudur.
 
 ---
+<div align="center">
+  <img src="görsel_2026-09-04_161858141.png" alt="Proje Önizleme" width="100%">
+</div>
 
+---
 ### Proje Akış Şeması (Flowchart)
 
 ```mermaid
